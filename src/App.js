@@ -6,28 +6,53 @@ import employees from "./employee.json";
 
 
 
+
 class App extends Component {
-  // Setting this.state.friends to the friends json array
+  // Setting this.state.employee to the employee json array
   state = {
-    employees
+    employees,
+    search:""
   };
   removeEmployee = id => {
-    // Filter this.state.friends for friends with an id not equal to the id being removed    
-    const employees = this.state.employees.filter(employee => employee.id !== id);
-    // Set this.state.friends equal to the new friends array
+    // Filter this.state.employee for employee with an id not equal to the id being removed    
+    let employees = this.state.employees.filter(employee => employee.id !== id);
+    // Set this.state.employee equal to the new friends array
     this.setState({ employees });
   };
+  handleInputChange = event => {
+    this.setState({ search: event.target.value });
+  };
+  
+
+  searchEmployee = event => {
+    event.preventDefault();
+    let search =this.state.search
+    let employees = this.state.employee.filer()
+    this.setState( {employees});
+    console.log(this.state.search)
+  }
+
+  resetEmployee = () => {
+    this.setState ({ employees});
+    console.log(this.state.employees)
+  }
   render() {
     return (
       <Wrapper>
-        <Title>Employee List</Title>
+        <Title 
+        searchEmployee={this.searchEmployee}
+        resetEmployee={this.resetEmployee}>
+          Employee List
+          
+        </Title>
+      
+     
         {this.state.employees.map(employee => (
           <EmployeeCard
             removeEmployee={this.removeEmployee}
             id={employee.id}
             key={employee.id}
-            firstname={employee.firstname}
-            lastname={employee.lastname}
+            name={employee.name}
             image={employee.image}
             occupation={employee.occupation}
             location={employee.location}

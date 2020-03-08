@@ -9,11 +9,9 @@ function EmployeeCard(props) {
       <div className="content">
         <ul>
           <li>
-            <strong>First:</strong> {props.firstname}
+            <strong>Name:</strong> {props.name}
           </li>
-          <li>
-            <strong>Last:</strong> {props.lastname}
-          </li>
+         
           <li>
             <strong>Occupation:</strong> {props.occupation}
           </li>
