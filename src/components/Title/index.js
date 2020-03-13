@@ -21,7 +21,7 @@ function Title(props) {
           <button className="btn btn-success" onClick={() => {props.handleInputChange(val.current.value)}}> 
             Search
           </button>
-          <button className="btn btn-primary" onClick={() =>props.resetEmployee()}>Reset</button>
+          <button className="btn btn-primary" onClick={() =>{props.resetEmployee()}}>Reset</button>
         </div>
       </div>
   </div>
